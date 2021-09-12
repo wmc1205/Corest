@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>hello world</title>
-    <h1>hello world</h1>
-</head>
+<html lang="ko">
+
+{% include 'head.html' %}
+
 <body>
+    <!-- header,footer 는 고정, content 부분은 유동적-->
+    {% include 'header.html' %}
+
+    {% block content %}
+    {% endblock %}
+
+
+    {% include 'footer.html' %}
 
 </body>
 </html>
