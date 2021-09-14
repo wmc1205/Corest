@@ -1,12 +1,19 @@
+{% load static %}
+
+
 <!-- head.html : bootstrap 등 환경설정 관련 파일 저장해두는 장소 -->
 <head>
     <meta charset="UTF-8">
     <title>corest</title>
-    <!-- bootstrpa link -->
+    <!-- bootstrap link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <!-- google fonts link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+<!-- DEFAULT CSS LINK -->
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+
 </head>
