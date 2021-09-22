@@ -2,10 +2,10 @@
 
     font-family: 'Anton', sans-serif;
 }
-.corest_footer_logo {
-    font-size: .6rem;
-}
 
 .corest_header_title {
     font-family: 'Anton', sans-serif;
+}
+.corest_footer_button {
+    font-size: .9rem;
 }
