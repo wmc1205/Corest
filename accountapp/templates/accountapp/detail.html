@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load bootstrap4 %}
+
 
 {% block content %}
 
@@ -13,21 +13,17 @@
 
     <h2 style="'font-family: 'NanumSquareBold'">
       {{ targetUser.username }}
-
     </h2>
+    {% if targetUser == user %}
+    <a href="{% url 'accountapp:update' pk=user.pk %}">
+      <p>
+        Change Info
+      </p>
+    </a>
+    {% endif %}
 
 
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}
