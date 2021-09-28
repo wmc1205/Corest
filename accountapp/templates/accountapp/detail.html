@@ -5,15 +5,32 @@
 
 <div>
 
-  <div style="text-align: center; max-width: 50px; margin: 4rem auto;">
+  <div style="text-align: center; max-width: 500px; margin: 4rem auto;">
 
     <p>
       {{ targetUser.date_joined }}
     </p>
+    <img src="{{ targetUser.profile.image.url }}" alt="" style="height: 12rem; width: 12rem; border-radius: 20rem;
+    margin-bottom: 3rem">
 
+    {% if targetUser.profile %}
     <h2 style="'font-family: 'NanumSquareBold'">
-      {{ targetUser.username }}
+      {{ targetUser.profile.nickname }}
+    <a href = "{% url 'profileapp:update' pk=targetUser.profile.pk %}">
+      edit
+    </a>
     </h2>
+    {% else %}
+    <a href="{% url 'profileapp:create' %}">
+      <h2 style="'font-family: 'NanumSquareBold'">
+        Create Profile
+      </h2>
+    </a>
+    {% endif %}
+    <!--대화명 작성-->
+    <h4 style="margin-bottom: 2rem;">
+      {{ targetUser.profile.message }}
+    </h4>
     {% if targetUser == user %}
     <a href="{% url 'accountapp:update' pk=user.pk %}">
       <p>
