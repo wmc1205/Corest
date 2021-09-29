@@ -10,27 +10,37 @@
     <p>
       {{ targetUser.date_joined }}
     </p>
-    <img src="{{ targetUser.profile.image.url }}" alt="" style="height: 12rem; width: 12rem; border-radius: 20rem;
-    margin-bottom: 3rem">
+
 
     {% if targetUser.profile %}
+    <img src="{{ targetUser.profile.image.url }}" alt="" style="height: 12rem; width: 12rem; border-radius: 20rem;
+    margin-bottom: 3rem">
     <h2 style="'font-family: 'NanumSquareBold'">
-      {{ targetUser.profile.nickname }}
-    <a href = "{% url 'profileapp:update' pk=targetUser.profile.pk %}">
-      edit
-    </a>
-    </h2>
-    {% else %}
-    <a href="{% url 'profileapp:create' %}">
-      <h2 style="'font-family: 'NanumSquareBold'">
-        Create Profile
+        {{ targetUser.profile.nickname }}
+          {% if targetUser == user %}
+          <a href = "{% url 'profileapp:update' pk=targetUser.profile.pk %}">
+            edit
+          </a>
+          {% endif %}
       </h2>
-    </a>
+      <!--대화명 작성-->
+      <h4 style="margin-bottom: 2rem;">
+        {{ targetUser.profile.message }}
+      </h4>
+    {% else %}
+      {% if targetUser == user %}
+      <a href="{% url 'profileapp:create' %}">
+        <h2 style="'font-family: 'NanumSquareBold'">
+          Create Profile
+        </h2>
+      </a>
+      {% else %}
+        <h2>
+          No Nickname
+        </h2>
+      {% endif %}
     {% endif %}
-    <!--대화명 작성-->
-    <h4 style="margin-bottom: 2rem;">
-      {{ targetUser.profile.message }}
-    </h4>
+
     {% if targetUser == user %}
     <a href="{% url 'accountapp:update' pk=user.pk %}">
       <p>
