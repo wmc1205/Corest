@@ -4,25 +4,32 @@
 
     <div>
 
-      <div style="text-align: center; max-width: 500px; margin: 4rem auto;">
+      <div style="text-align: center; max-width: 700px; margin: 4rem auto;">
 
         <p>
           {{ targetUser.date_joined }}
         </p>
 
-
-       <h1> {{ targetArticle.title }}</h1>
-        <img src="{{ targetArticle.image.url }}" alt="">
+       <h1>{{ targetArticle.title }}</h1>
+       <h4>{{ targetArticle.writer.profile.nickname }}</h4>
+       <hr>
+        <img style = 'width: 100%; border-radius: 1rem; margin: 2rem 0;'
+                src="{{ targetArticle.image.url }}" alt="">
         <p>
           {{ targetArticle.content }}
-        </p>
 
-        <a href="{% url 'articleapp:update' pk=targetArticle.pk %}">
-            <p>Update Article</p>
+        </p>
+        {% if targetArticle.writer == user %}
+        <a href="{% url 'articleapp:update' pk=targetArticle.pk %}"
+            class="btn btn-success rounded-pill col-3">
+            Update
         </a>
-        <a href="{% url 'articleapp:delete' pk=targetArticle.pk %}">
-            <p>Delete Article</p>
+        <a href="{% url 'articleapp:delete' pk=targetArticle.pk %}"
+            class="btn btn-warning rounded-pill col-3">
+            Delete
         </a>
+        {% endif %}
+        <hr>
       </div>
     </div>
 
