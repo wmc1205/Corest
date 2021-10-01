@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    <!-- article 화면의 상세 페이지 -->
     <div>
 
       <div style="text-align: center; max-width: 700px; margin: 4rem auto;">
@@ -19,6 +19,7 @@
           {{ targetArticle.content }}
 
         </p>
+
         {% if targetArticle.writer == user %}
         <a href="{% url 'articleapp:update' pk=targetArticle.pk %}"
             class="btn btn-success rounded-pill col-3">
@@ -30,7 +31,12 @@
         </a>
         {% endif %}
         <hr>
+        {% for comment in targetArticle.comment.all %}
+          {% include 'commentapp/detail.html' with comment=comment %}
+        {% endfor %}
+          {% include 'commentapp/create.html' with article=targetArticle %}
       </div>
     </div>
 
 {% endblock %}
+
