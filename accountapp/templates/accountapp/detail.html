@@ -53,9 +53,12 @@
       </p>
     </a>
     {% endif %}
-
-
   </div>
+  <div>
+
+    {% include 'snippets/list_fragments.html' with article_list=object.list %}
+  </div>
+
 </div>
 
 {% endblock %}

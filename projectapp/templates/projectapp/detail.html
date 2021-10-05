@@ -15,8 +15,11 @@
           <h5 style="margin-bottom:3rem;">
               {{ targetProject.description }}
           </h5>
-
       </div>
+
+        <div>
+            {% include 'snippets/list_fragments.html' with article_list=object_list %}
+        </div>
     </div>
 
 {% endblock %}
