@@ -46,7 +46,6 @@ class AccountDetailView(DetailView):
 
 @method_decorator(has_ownership,'post')
 @method_decorator(has_ownership,'get')
-
 class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountUpdateForm

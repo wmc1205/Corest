@@ -14,7 +14,7 @@
 
     {% if targetUser.profile %}
     <img src="{{ targetUser.profile.image.url }}" alt="" style="height: 12rem; width: 12rem; border-radius: 20rem;
-    margin-bottom: 3rem">
+    margin-bottom: 2rem; object-fit: cover;">
     <h2 style="'font-family: 'NanumSquareBold'">
         {{ targetUser.profile.nickname }}
           {% if targetUser == user %}
