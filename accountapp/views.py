@@ -45,6 +45,7 @@ class AccountDetailView(DetailView, MultipleObjectMixin):
     model = User
     context_object_name = 'targetUser'
     template_name = 'accountapp/detail.html'
+
     paginate_by = 25
 
     def get_context_data(self, **kwargs):
