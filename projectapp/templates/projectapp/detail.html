@@ -4,7 +4,7 @@
     <!-- project 화면의 상세 페이지 -->
     <div>
 
-      <div style="text-align: center; max-width: 700px; margin: 4rem auto;">
+      <div style="text-align: center; max-width: 700px; margin: 4rem auto 1.5rem auto;">
 
           <img src="{{ targetProject.image.url }}" alt=""
                style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem; object-fit:cover;">
@@ -12,13 +12,27 @@
           <h2 style="font-family: 'NanumSqureBold'">
               {{ targetProject.title }}
           </h2>
-          <h5 style="margin-bottom:3rem;">
+          <h5>
               {{ targetProject.description }}
           </h5>
       </div>
-
+        <div class="text-center mb-4">
+            {% if user.is_authenticated %}
+                {% if not subscription %}
+            <a href="{% url 'subscribeapp:subscribe' %}?project_pk={{ targetProject.pk }}"
+               class="btn btn-primary rounded-pill px-4 ">
+                Subscribe
+            </a>
+            {% else %}
+            <a href="{% url 'subscribeapp:subscribe' %}?project_pk={{ targetProject.pk }}"
+               class="btn btn-danger rounded-pill px-4 ">
+                Cancel Subscribe
+            </a>
+            {% endif %}
+            {% endif %}
+        </div>
         <div>
-            {% include 'snippets/list_fragments.html' with article_list=object_list %}
+            {%include 'snippets/list_fragments.html' with article_list=object_list %}
         </div>
     </div>
 
