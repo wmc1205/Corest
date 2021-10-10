@@ -18,9 +18,13 @@
                 <span>SignUp</span>
             </a>
             {% else %}
+            <a href="{% url 'subscribeapp:list' %}" class="corest_header_nav">
+                <span>Subscription</span>
+            </a>
             <a href="{% url 'accountapp:detail' pk=user.pk %}" class="corest_header_nav">
                 <span>MyPage</span>
             </a>
+
             <a href="{% url 'accountapp:logout' %}?next={{ request.path }}" class="corest_header_nav">
                 <span>logout</span>
             </a>
