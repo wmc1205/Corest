@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load bootstrap4 %}
 {% block content %}
     <!-- article 화면의 상세 페이지 -->
     <div>
@@ -15,10 +15,9 @@
        <hr>
         <img style = 'width: 100%; border-radius: 1rem; margin: 2rem 0;'
                 src="{{ targetArticle.image.url }}" alt="">
-        <p>
-          {{ targetArticle.content }}
-
-        </p>
+          <div class="mb-4" style="text-align:left">
+              {{ targetArticle.content | safe }}
+        </div>
 
         {% if targetArticle.writer == user %}
         <a href="{% url 'articleapp:update' pk=targetArticle.pk %}"

@@ -9,6 +9,7 @@ from articleapp.decorators import article_ownership_required
 from articleapp.forms import ArticleCreationForm
 from articleapp.models import Article
 from commentapp.forms import CommentCreationForm
+from projectapp.models import Project
 
 
 @method_decorator(login_required, 'get')
@@ -26,6 +27,11 @@ class ArticleCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('articleapp:detail', kwargs={'pk': self.object.pk})
+    #자신이 만든 프로젝트에만 article을 작성하게 해주는 method
+    def get_form(self, form_class=None):
+        form = super(ArticleCreateView, self).get_form()
+        form.fields['project'].queryset = Project.objects.filter(writer_id=self.request.user.id)
+        return form
 
 
 class ArticleDetailView(DetailView,FormMixin):

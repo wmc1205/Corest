@@ -11,4 +11,6 @@ class Project(models.Model):
 
    created_at = models.DateField(auto_now_add=True, null=True)
 
-
+   #article create 진행할 때 project 선택 창에 project 이름이 드러나도록 구현
+   def __str__(self):
+      return f'{self.pk} : {self.title}'
