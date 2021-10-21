@@ -21,7 +21,9 @@ from django.urls import path, include
 from articleapp.views import ArticleListView
 
 urlpatterns = [
+    #기본 주소로 접근 했을 때, ArticleListView를 보여주도록.
     path('', ArticleListView.as_view(), name='home'),
+
     path('admin/', admin.site.urls),
     path('accounts/', include('accountapp.urls')),
     path('profiles/', include('profileapp.urls')),
